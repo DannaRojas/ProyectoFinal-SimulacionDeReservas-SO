@@ -1,22 +1,66 @@
-# Sistema de Reservas para el Parque Berlín
+# Proyecto – Sistema de Reservas Parque Berlín
 
-En la realización de este proyecto para la materia de Sistemas Operativos se realizo un programa encargado de realizar reservas teniendo en cuenta la hora, aforo. En caso de no cumplir con lo necesario se mueve la reserva o se niega, todo eso según las condiciones de reserva.
+*Autoras:*  
+Danna Gabriela Rojas Bernal  
+María Fernanda Velandia Gracia
+
+*Materia:* Sistemas Operativos  
+*Tema:* Sincronización, procesos, hilos y comunicación con Pipes en C
+
+---
+
+## Propósito de este proyecto
+
+Este repositorio contiene el código fuente y documentación del proyecto *Sistema de Reservas del Parque Berlín*, desarrollado en lenguaje C para demostrar el uso de:
+
+- Procesos POSIX  
+- Hilos pthread  
+- Pipes con comunicación entre procesos  
+- Sincronización mediante mutex  
+- Simulación de aforo y gestión de solicitudes
+
+El programa administra solicitudes de familias que desean ingresar al parque, verificando disponibilidad por hora y aforo. Dependiendo de la capacidad existente, una solicitud puede:
+
+- Ser aceptada  
+- Reprogramarse automáticamente  
+- Ser rechazada  
+
+Al finalizar la jornada, el sistema genera estadísticas generales del uso del parque.
+
+---
 
 ## Modo de uso
-1. Abrir dos terminales desde nuestra carpeta de proyecto
-2. En la primera terminal ingresar make controlador
-3. Ingresar ./controlador -i horaIni -f horaFin -s segHora -t total -p pipeRecibe
-4. En la segunda terminal ingresar make agente
-5. Ingresar ./agente -s nombreAgente -a nombreArchivo -p pipeRecibe
 
-## Archivo con solicitudes
-- El archivo debe ser .csv
-- Debe contener familia, hora, numPersonas
-- En este proyecto se tiene 6 pruebas.csv
+Para ejecutar el programa se requieren dos terminales abiertas en la carpeta del proyecto.
 
-## Anotaciones
-Recuerde hacer make clean si llega a salir que ya se encuentra en update el controlador o el agente
+### Terminal 1 – Controlador
 
-### Integrantes 
-- Danna Gabriela Rojas Bernal
-- María Fernanda Velandia Gracia
+1. make controlador
+2. ./controlador -i horaIni -f horaFin -s segHora -t total -p pipeRecibe
+
+---
+
+### Terminal 2 – Agente
+
+1. make agente
+2. ./agente -s nombreAgente -a archivo.csv -p pipeRecibe
+   
+---
+
+## Archivos de solicitudes
+
+El archivo debe:
+
+- Tener formato .csv
+- Contener las columnas: familia,hora,numPersonas
+  Ejemplo:
+  López,9,4
+  Gómez,11,3
+
+- El repositorio incluye 6 archivos de prueba con diferentes combinaciones de reserva.
+
+---
+
+## Anotaciones importantes
+
+Si aparece un mensaje indicando que el ejecutable ya existe o debe recompilarse, usar: make clean
