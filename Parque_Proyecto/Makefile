@@ -7,10 +7,14 @@
 ############################################################
 
 GCC = gcc
+# -Wall y -Wextra muestran advertencias útiles
+# -pthread permite utilizar hilos POSIX
+# -g incluye información de depuración
 FLAGS = -Wall -Wextra -pthread -g
 
 PROGRAMAS = controlador agente
 
+# Se añaden las carpetas: Sistema, Controlador_de_Reserva y Agente_de_Reserva
 INCLUDES = -ISistema -IControlador_de_Reserva -IAgente_de_Reserva
 
 controlador:
